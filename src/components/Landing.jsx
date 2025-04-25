@@ -9,17 +9,27 @@ import MovieLoading from "./ui/MovieLoading";
 import { preload } from "react-dom";
 import { useSearchParams } from "react-router-dom";
 import nana from "./nana.png";
+import tt0232500 from "../../public/video/tt0232500.mp4";
+import tt0848228 from "../../public/video/tt0848228.mp4";
+import tt0120812 from "../../public/video/tt0120812.mp4";
+import tt0117060 from "../../public/video/tt0117060.mp4";
 
 const Landing = () => {
+  const moviesObj = {
+    tt0232500: tt0232500,
+    tt0848228: tt0848228,
+    tt0120812: tt0120812,
+    tt0117060: tt0117060,
+  };
   const movieIds = ["tt0232500", "tt0848228", "tt0120812", "tt0117060"];
   const [movies, setMovies] = useState([]);
   const [movieIndex, setMovieIndex] = useState(0);
   const [nextMovieIndex, setNextMovieIndex] = useState(1);
 
-  preload("./public/video/tt0232500.mp4", { as: "video" });
-  preload("./public/video/tt0848228.mp4", { as: "video" });
-  preload("./public/video/tt0120812.mp4", { as: "video" });
-  preload("./public/video/tt0117060.mp4", { as: "video" });
+  // preload("./public/video/tt0232500.mp4", { as: "video" });
+  // preload("./public/video/tt0848228.mp4", { as: "video" });
+  // preload("./public/video/tt0120812.mp4", { as: "video" });
+  // preload("./public/video/tt0117060.mp4", { as: "video" });
 
   function fetchMovies() {
     for (var i = 0; i < movieIds.length; i++) {
@@ -55,21 +65,15 @@ const Landing = () => {
   const [descBotTr, setDescBotTr] = useState("");
   const [descRatingTr, setDescRatingTr] = useState("opacity-60");
   const [vidSrc1, setVidSrc1] = useState(
-    `./public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
+    moviesObj[movies.length && movies[movieIndex].imdbID]
   );
   const [vidSrc2, setVidSrc2] = useState(
-    `./public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
+    moviesObj[movies.length && movies[movieIndex].imdbID]
   );
 
   useEffect(() => {
-    setVidSrc1(
-      `./public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
-    );
-    setVidSrc2(
-      `./public/video/${
-        movies.length === 4 && movies[nextMovieIndex].imdbID
-      }.mp4`
-    );
+    setVidSrc1(moviesObj[movies.length && movies[movieIndex].imdbID]);
+    setVidSrc2(moviesObj[movies.length === 4 && movies[nextMovieIndex].imdbID]);
   }, [movies]);
 
   useEffect(() => {
@@ -121,11 +125,7 @@ const Landing = () => {
         //   nextMovieIndex <= movieIds.length - 2 ? nextMovieIndex + 2 : nextMovieIndex - 2
         // );
         const nextMovie = movieIndex + 2 > 3 ? movieIndex - 2 : movieIndex + 2;
-        setVidSrc1(
-          `./public/video/${
-            movies.length === 4 && movies[nextMovie].imdbID
-          }.mp4`
-        );
+        setVidSrc1(moviesObj[movies.length === 4 && movies[nextMovie].imdbID]);
 
         setVidNum(2);
       }, 300);
@@ -152,11 +152,7 @@ const Landing = () => {
         // );
 
         const nextMovie = movieIndex + 2 > 3 ? movieIndex - 2 : movieIndex + 2;
-        setVidSrc2(
-          `./public/video/${
-            movies.length === 4 && movies[nextMovie].imdbID
-          }.mp4`
-        );
+        setVidSrc2(moviesObj[movies.length === 4 && movies[nextMovie].imdbID]);
 
         setVidNum(1);
       }, 300);
@@ -193,8 +189,8 @@ const Landing = () => {
         >
           test {movieIndex}
         </button> */}
-        <div className="absolute size-20">
-          <img src="src/components/nana.png" alt="" />
+        <div className="absolute size-40">
+          <video src={tt0232500}></video>
         </div>
         <div className="absolute size-20 translate-x-[100%]">
           <img src={nana} alt="" />
