@@ -8,7 +8,7 @@ import Movie from "./ui/Movie";
 import MovieLoading from "./ui/MovieLoading";
 import { preload } from "react-dom";
 import { useSearchParams } from "react-router-dom";
-import nana from "./nana.png";
+// import nana from "./nana.png";
 import tt0232500 from "../../public/video/tt0232500.mp4";
 import tt0848228 from "../../public/video/tt0848228.mp4";
 import tt0120812 from "../../public/video/tt0120812.mp4";
@@ -189,12 +189,12 @@ const Landing = () => {
         >
           test {movieIndex}
         </button> */}
-        <div className="absolute size-40">
+        {/* <div className="absolute size-40">
           <video src={tt0232500}></video>
         </div>
         <div className="absolute size-20 translate-x-[100%]">
           <img src={nana} alt="" />
-        </div>
+        </div> */}
         <div className="absolute hidden md:flex justify-center items-center h-full w-full overflow-hidden opacity-20">
           {movies.length === 4 && (
             <>
