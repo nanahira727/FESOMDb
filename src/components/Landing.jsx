@@ -184,7 +184,8 @@ const Landing = () => {
         >
           test {movieIndex}
         </button> */}
-        <div>{/* <img src="public\video\momoi_n.png" alt="" /> */}</div>
+        <div className="absolute size-20"><img src="src/components/nana.png" alt="" /></div>
+        <div className="absolute size-20 translate-x-[100%]"><img src="./FESOMDb/src/components/nana.png" alt="" /></div>
         <div className="absolute hidden md:flex justify-center items-center h-full w-full overflow-hidden opacity-20">
           {movies.length === 4 && (
             <>
