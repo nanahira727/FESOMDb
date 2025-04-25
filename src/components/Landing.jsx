@@ -8,6 +8,7 @@ import Movie from "./ui/Movie";
 import MovieLoading from "./ui/MovieLoading";
 import { preload } from "react-dom";
 import { useSearchParams } from "react-router-dom";
+import nana from "./nana.png";
 
 const Landing = () => {
   const movieIds = ["tt0232500", "tt0848228", "tt0120812", "tt0117060"];
@@ -65,7 +66,9 @@ const Landing = () => {
       `./public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
     );
     setVidSrc2(
-      `./public/video/${movies.length === 4 && movies[nextMovieIndex].imdbID}.mp4`
+      `./public/video/${
+        movies.length === 4 && movies[nextMovieIndex].imdbID
+      }.mp4`
     );
   }, [movies]);
 
@@ -119,7 +122,9 @@ const Landing = () => {
         // );
         const nextMovie = movieIndex + 2 > 3 ? movieIndex - 2 : movieIndex + 2;
         setVidSrc1(
-          `./public/video/${movies.length === 4 && movies[nextMovie].imdbID}.mp4`
+          `./public/video/${
+            movies.length === 4 && movies[nextMovie].imdbID
+          }.mp4`
         );
 
         setVidNum(2);
@@ -148,7 +153,9 @@ const Landing = () => {
 
         const nextMovie = movieIndex + 2 > 3 ? movieIndex - 2 : movieIndex + 2;
         setVidSrc2(
-          `./public/video/${movies.length === 4 && movies[nextMovie].imdbID}.mp4`
+          `./public/video/${
+            movies.length === 4 && movies[nextMovie].imdbID
+          }.mp4`
         );
 
         setVidNum(1);
@@ -170,7 +177,9 @@ const Landing = () => {
     const search = document.querySelector("#search_landing").value;
     // console.log("search:", document.querySelector("#search_landing").value);
     const filter = searchParams.get("filter");
-    navigate(`/FESOMDb/search?q=${search}` + (filter ? `&filter=${filter}` : ""));
+    navigate(
+      `/FESOMDb/search?q=${search}` + (filter ? `&filter=${filter}` : "")
+    );
   }
 
   return (
@@ -184,8 +193,12 @@ const Landing = () => {
         >
           test {movieIndex}
         </button> */}
-        <div className="absolute size-20"><img src="src/components/nana.png" alt="" /></div>
-        <div className="absolute size-20 translate-x-[100%]"><img src="./FESOMDb/src/components/nana.png" alt="" /></div>
+        <div className="absolute size-20">
+          <img src="src/components/nana.png" alt="" />
+        </div>
+        <div className="absolute size-20 translate-x-[100%]">
+          <img src={nana} alt="" />
+        </div>
         <div className="absolute hidden md:flex justify-center items-center h-full w-full overflow-hidden opacity-20">
           {movies.length === 4 && (
             <>
@@ -269,7 +282,10 @@ const Landing = () => {
                   containerClass={"shadow-sm group"}
                 />
                 <Link
-                  to={movies.length && `/FESOMDb/movies/${movies[movieIndex].imdbID}`}
+                  to={
+                    movies.length &&
+                    `/FESOMDb/movies/${movies[movieIndex].imdbID}`
+                  }
                 >
                   <Button
                     title="View"
