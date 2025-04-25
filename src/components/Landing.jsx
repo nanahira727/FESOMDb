@@ -15,10 +15,10 @@ const Landing = () => {
   const [movieIndex, setMovieIndex] = useState(0);
   const [nextMovieIndex, setNextMovieIndex] = useState(1);
 
-  preload("public/video/tt0232500.mp4", { as: "video" });
-  preload("public/video/tt0848228.mp4", { as: "video" });
-  preload("public/video/tt0120812.mp4", { as: "video" });
-  preload("public/video/tt0117060.mp4", { as: "video" });
+  preload("./public/video/tt0232500.mp4", { as: "video" });
+  preload("./public/video/tt0848228.mp4", { as: "video" });
+  preload("./public/video/tt0120812.mp4", { as: "video" });
+  preload("./public/video/tt0117060.mp4", { as: "video" });
 
   function fetchMovies() {
     for (var i = 0; i < movieIds.length; i++) {
@@ -54,18 +54,18 @@ const Landing = () => {
   const [descBotTr, setDescBotTr] = useState("");
   const [descRatingTr, setDescRatingTr] = useState("opacity-60");
   const [vidSrc1, setVidSrc1] = useState(
-    `public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
+    `./public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
   );
   const [vidSrc2, setVidSrc2] = useState(
-    `public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
+    `./public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
   );
 
   useEffect(() => {
     setVidSrc1(
-      `public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
+      `./public/video/${movies.length && movies[movieIndex].imdbID}.mp4`
     );
     setVidSrc2(
-      `public/video/${movies.length === 4 && movies[nextMovieIndex].imdbID}.mp4`
+      `./public/video/${movies.length === 4 && movies[nextMovieIndex].imdbID}.mp4`
     );
   }, [movies]);
 
@@ -119,7 +119,7 @@ const Landing = () => {
         // );
         const nextMovie = movieIndex + 2 > 3 ? movieIndex - 2 : movieIndex + 2;
         setVidSrc1(
-          `public/video/${movies.length === 4 && movies[nextMovie].imdbID}.mp4`
+          `./public/video/${movies.length === 4 && movies[nextMovie].imdbID}.mp4`
         );
 
         setVidNum(2);
@@ -148,7 +148,7 @@ const Landing = () => {
 
         const nextMovie = movieIndex + 2 > 3 ? movieIndex - 2 : movieIndex + 2;
         setVidSrc2(
-          `public/video/${movies.length === 4 && movies[nextMovie].imdbID}.mp4`
+          `./public/video/${movies.length === 4 && movies[nextMovie].imdbID}.mp4`
         );
 
         setVidNum(1);
