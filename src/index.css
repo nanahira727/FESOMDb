@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  overflow-anchor: none;
+}
+
+h1 {
+  font-size: 1em;
+}
+
+body {
+  font-family: "roboto", sans-serif;
+  width: 100dvw;
+  background-color: #dfdff0;
+  overflow-x: hidden;
+}
+
+.perspective-left {
+  transform: perspective(1200px) rotateY(24deg) rotateX(3deg);
+}
+
+@media (width <= 48rem /* 768px */) {
+  .perspective-left {
+    transform: none;
+  }
+}
+
+.perspective-right {
+  transform: perspective(1200px) rotateY(-30deg);
+}
+
+.perspective-bg {
+  transform: perspective(1200px) rotateY(-10deg) translateX(-70px);
+}
+
+.shadow {
+  box-shadow: -10px 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.movie-shadow {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.nav::after {
+  content: "";
+  @apply -z-10 absolute left-0 right-0 top-0 bottom-0 backdrop-blur-2xl;
+}
+
+.nav::before {
+  content: "";
+  @apply -z-8 absolute left-0 right-0 top-0 bottom-0 bg-dark-1 opacity-70;
+}
+
+@layer base {
+  @font-face {
+    font-family: "roboto";
+    src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap")
+      format("woff2");
+  }
+
+  @font-face {
+    font-family: "staatliches";
+    src: url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap")
+      format("woff2");
+  }
+}
+
+@theme {
+  --font-roboto: "Roboto", "sans-serif";
+  --font-staatliches: "Staatliches", "sans-serif";
+
+  --color-dark-1: #0c0c0c;
+  --color-dark-2: #1b1b20;
+  --color-dark-3: #32323b;
+  --color-dark-4: #44444e;
+
+  --color-light-2: #e3e3ec;
+  --color-light-3: #cbcbd8;
+  --color-light-4: #a3a3ad;
+
+  --color-yellow-neon: #ffed50;
+  --color-blue-neon: #5df4ff;
+  --color-pink-neon: #ff51f0;
+
+  --color-green-r: #1bff60;
+  --color-yellow-r: #f5f236;
+  --color-red-r: #df2020;
+}
